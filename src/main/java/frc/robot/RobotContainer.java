@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.IntakeCommand;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -23,7 +24,10 @@ public class RobotContainer {
 
     private Joystick driverJoystick1 = new Joystick(Constants.DRIVER_JOYSTICK1);
     private Joystick driverJoystick2 = new Joystick(Constants.DRIVER_JOYSTICK2);
-    JoystickButton button1 = new JoystickButton(driverJoystick1, Constants.BUTTON_1);
+    private Joystick operatorJoystick = new Joystick(Constants.OPERATOR_JOYSTICK);
+
+    JoystickButton driverButton1 = new JoystickButton(driverJoystick1, Constants.DRIVER_BUTTON_1);
+    JoystickButton operatorButton1 = new JoystickButton(operatorJoystick, Constants.OPERATOR_BUTTON_1);
 
     public double GetDriver1RawAxis(int axis){
       return driverJoystick1.getRawAxis(axis);
@@ -31,9 +35,13 @@ public class RobotContainer {
     public double GetDriver2RawAxis(int axis){
       return driverJoystick2.getRawAxis(axis);
     }
-    public boolean GetButtonStatus(int button){
-      return button1.get();
+    public boolean GetDriverButtonLeft1Status(int button){
+      return driverButton1.get();
     }
+    public boolean GetOperatorButton1Status(int button){
+      return operatorButton1.get();
+    }
+
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -50,6 +58,7 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    operatorButton1.whenPressed(new IntakeCommand());
   }
 
 

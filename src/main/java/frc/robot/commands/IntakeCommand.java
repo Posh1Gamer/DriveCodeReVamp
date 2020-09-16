@@ -7,62 +7,49 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class KajDrive extends CommandBase {
+public class IntakeCommand extends CommandBase {
   /**
-   * Creates a new KajDrive.
+   * Creates a new IntakeCommand.
    */
-  public KajDrive() {
+  boolean intakeOnOff1 = false;
+  Timer timer;
+  public IntakeCommand() {
+    timer = new Timer();
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.driveTrain);
+    addRequirements(Robot.intake);
   }
 
-// Called when the command is initially scheduled.
+  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    Robot.intake.startIntake();
+
+    timer.reset();
+    timer.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double driveOut = 0.0;
-    double steerOut = 0.0;
-    boolean isQuickTurn = Robot.m_oi.GetDriverButtonLeft1Status(Constants.DRIVER_BUTTON_1);
-
-    double leftStickY = Robot.m_oi.GetDriver1RawAxis(Constants.LEFT_STICK_Y);
-    double rightStickX = Robot.m_oi.GetDriver2RawAxis(Constants.RIGHT_STICK_X);
-    if(leftStickY > 0) {
-      driveOut = leftStickY + Constants.leftDeadZoneDecrease;
-    }
-    else if(leftStickY < 0){
-      driveOut = leftStickY - Constants.leftDeadZoneDecrease;
-    }
-
-    if(rightStickX > 0) {
-      steerOut = rightStickX + Constants.rightDeadZoneDecrease;
-    }
-    else if(rightStickX < 0){
-      steerOut = rightStickX - Constants.rightDeadZoneDecrease;
-    }
-
-    Robot.driveTrain.curvatureDrive(driveOut, steerOut, isQuickTurn);
-
+    boolean intakeOnOff = Robot.m_oi.GetOperatorButton1Status(Constants.OPERATOR_BUTTON_1);
+    intakeOnOff1 = intakeOnOff;
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.driveTrain.setLeftMotors(0);
-    Robot.driveTrain.setRightMotors(0);
-
+    Robot.intake.stopIntake();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return intakeOnOff1 = true && timer.get() > .125;
   }
 }

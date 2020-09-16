@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalSource;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -27,6 +29,21 @@ public final class Constants {
     public static final double leftDeadZoneDecrease = .1;
     public static final double rightDeadZoneDecrease = .1;
     public static final int BUTTON = 1;
-	public static final int BUTTON_1 = 1;
+	public static final int DRIVER_BUTTON_1 = 1;
 	public static final int DRIVER_JOYSTICK2 = 0;
+	public static final int INTAKE_MOTOR_ID = 1;
+	public static final int INTAKE_SOLENOID_CHANNEL = 0;
+	public static final int OPERATOR_JOYSTICK = 0;
+	public static final int OPERATOR_BUTTON_1 = 0;
+	public static final int CANNON_MOTOR_ID = 0;
+	public static DigitalSource[] kEncoderPorts;
+	public static double kSVolts;
+	public static double kCosVolts;
+	public static double kVVoltSecondPerRad;
+	public static double kAVoltSecondSquaredPerRad;
+	public static double kP;
+	public static double kMaxVelocityRadPerSecond;
+	public static double kMaxAccelerationRadPerSecSquared;
+	public static double kEncoderDistancePerPulse;
+    public static final double kArmOffsetRads = 0.5;
 }
