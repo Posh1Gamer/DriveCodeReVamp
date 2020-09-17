@@ -51,4 +51,5 @@ public final class Constants {
 	public static final int OPERATOR_BUTTON_2 = 0;
 	public static final int OPERATOR_BUTTON_3 = 0;
 	public static final int CLIMB_POSITION = 0;
+	public static final int OPERATOR_BUTTON_4 = 0;
 }

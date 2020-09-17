@@ -74,5 +74,4 @@ public class CannonArmSubsystem extends SubsystemBase {
         else
         cannonMotor.set(ControlMode.MotionMagic, position);
     }
-
 }
