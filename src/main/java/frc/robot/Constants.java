@@ -46,4 +46,5 @@ public final class Constants {
 	public static final int CANNON_CRUISE_VELOCITY = 2000;
 	public static final int CANNON_ACCELERATION = 800;
 	public static final int CANNON_S_CURVE = 2;
+	public static final int SHOOT_POSITION = -15;
 }
