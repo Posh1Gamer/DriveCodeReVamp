@@ -47,4 +47,5 @@ public final class Constants {
 	public static final int CANNON_ACCELERATION = 800;
 	public static final int CANNON_S_CURVE = 2;
 	public static final int SHOOT_POSITION = -15;
+	public static final double INTAKE_POSITION = 0;
 }
