@@ -23,7 +23,7 @@ public class CannonShootCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.cannonArmSubsystem.motionMagicPivot(Constants.SHOOT_POSITION);
+    Robot.cannonArmSubsystem.motionMagicPivot(Constants.SHOOT_POSITION, false);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

@@ -11,11 +11,11 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class CannonIntakeCommand extends CommandBase {
+public class CannonClimbCommand extends CommandBase {
   /**
-   * Creates a new CannonIntakeCommand.
+   * Creates a new CannonClimbCommand.
    */
-  public CannonIntakeCommand() {
+  public CannonClimbCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.cannonArmSubsystem);
   }
@@ -23,7 +23,7 @@ public class CannonIntakeCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.cannonArmSubsystem.motionMagicPivot(Constants.INTAKE_POSITION, false);
+    Robot.cannonArmSubsystem.motionMagicPivot(Constants.CLIMB_POSITION, false);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

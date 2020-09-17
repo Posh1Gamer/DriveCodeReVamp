@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.CannonIntakeCommand;
+import frc.robot.commands.CannonShootCommand;
 import frc.robot.commands.IntakeCommand;
 
 /**
@@ -28,6 +30,8 @@ public class RobotContainer {
 
     JoystickButton driverButton1 = new JoystickButton(driverJoystick1, Constants.DRIVER_BUTTON_1);
     JoystickButton operatorButton1 = new JoystickButton(operatorJoystick, Constants.OPERATOR_BUTTON_1);
+    JoystickButton operatorButton2 = new JoystickButton(operatorJoystick, Constants.OPERATOR_BUTTON_2);
+    JoystickButton operatorButton3 = new JoystickButton(operatorJoystick, Constants.OPERATOR_BUTTON_3);
 
     public double GetDriver1RawAxis(int axis){
       return driverJoystick1.getRawAxis(axis);
@@ -59,6 +63,8 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     operatorButton1.whenPressed(new IntakeCommand());
+    operatorButton2.whenPressed(new CannonShootCommand());
+    operatorButton2.whenPressed(new CannonIntakeCommand());
   }
 
 

@@ -64,7 +64,14 @@ public class CannonArmSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
   //calls "motionMagicPivot" method and imports target position(updated on button press)
-  public void motionMagicPivot(double position) {
+  public void motionMagicPivot(int position, boolean isResetting) {
+        if(isResetting){
+          cannonMotor.set(ControlMode.PercentOutput, -.2);
+        }
+        else if(isResetting && CannonLimit.get()){
+          cannonMotor.setSelectedSensorPosition(0, 0, 0);
+        }
+        else
         cannonMotor.set(ControlMode.MotionMagic, position);
     }
 
